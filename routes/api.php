@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PropertieController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +27,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/properties', [PropertieController::class, 'index']);
     Route::post('/properties', [PropertieController::class, 'store']);
     Route::put('/properties/{id}', [PropertieController::class, 'update']);
+
+    Route::post('/media', [MediaController::class, 'store']);
+    Route::delete('/media/{id}', [MediaController::class, 'destroy']);
 });
