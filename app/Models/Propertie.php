@@ -16,6 +16,7 @@ class Propertie extends Model
         'location',
         'category',
         'price',
+        'is_active',
     ];
 
     public function medias(): HasMany
