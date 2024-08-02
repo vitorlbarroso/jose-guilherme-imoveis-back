@@ -31,7 +31,7 @@ class PropertieController extends Controller
     public function index()
     {
         $getProperties = Propertie::orderBy('is_active', 'DESC')->orderBy('id', 'DESC')->with('medias', function ($query) {
-            $query->orderBy('id', 'DESC')->select(['id', 'title', 'url', 'properties_id'])->first();
+            $query->orderBy('id', 'DESC')->select(['id', 'title', 'url', 'properties_id']);
         })->get(['id', 'title', 'description', 'location', 'price', 'is_active']);
 
         return Responses::OK('', $getProperties);
