@@ -43,11 +43,11 @@ class PropertieController extends Controller
 
         if ($categoryFilter == 'todos') {
             $getProperties = Propertie::where('is_active', 1)->orderBy('id', 'DESC')->with('medias', function ($query) {
-                $query->orderBy('id', 'DESC')->select(['id', 'title', 'url', 'properties_id'])->first();
+                $query->orderBy('id', 'DESC')->select(['id', 'title', 'url', 'properties_id']);
             })->get(['id', 'title', 'description', 'location', 'price', 'is_active', 'category']);
         } else {
             $getProperties = Propertie::where('is_active', 1)->where('category', $categoryFilter)->orderBy('id', 'DESC')->with('medias', function ($query) {
-                $query->orderBy('id', 'DESC')->select(['id', 'title', 'url', 'properties_id'])->first();
+                $query->orderBy('id', 'DESC')->select(['id', 'title', 'url', 'properties_id']);
             })->get(['id', 'title', 'description', 'location', 'price', 'is_active']);
         }
 
@@ -58,7 +58,7 @@ class PropertieController extends Controller
     public function home_categories()
     {
         $activeProperties = Propertie::where('is_active', 1)->with('medias', function ($query) {
-            $query->orderBy('id', 'DESC')->select(['id', 'title', 'url', 'properties_id'])->first();
+            $query->orderBy('id', 'DESC')->select(['id', 'title', 'url', 'properties_id']);
         })->orderBy('id', 'DESC')->get();
 
         $groupedProperties = $activeProperties->groupBy('category')->map(function ($group) {
